@@ -1,5 +1,5 @@
 #!/bin/python
-from transliterate import translit, get_available_language_codes
+from transliterate import translit
 a = "KOLA"
 b = a[0]+a[1].lower()+a[2].lower()+a[3].lower()
 c = a.lower()
