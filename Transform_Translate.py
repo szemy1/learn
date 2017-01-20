@@ -1,5 +1,11 @@
 #!/bin/python
+import csv
 from transliterate import translit
+with open('eggs.csv', 'rb') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    for row in spamreader:
+       print ', '.join(row)
+
 a = "KOLA"
 b = a[0]+a[1].lower()+a[2].lower()+a[3].lower()
 c = a.lower()
