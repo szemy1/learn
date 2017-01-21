@@ -4,9 +4,6 @@ import csv
 import codecs
 from transliterate import translit
 
-
-
-
 a= []
 with open('eggs.csv', 'rb') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
