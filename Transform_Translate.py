@@ -7,7 +7,7 @@ with open('eggs.csv', 'rb') as csvfile:
        print ', '.join(row)
 
 a = "KOLA"
-b = a[0]+a[1].lower()+a[2].lower()+a[3].lower()
+b = a.title()
 c = a.lower()
 cirill_a =(translit(a, 'ru'))
 cirill_b =(translit(b, 'ru'))
