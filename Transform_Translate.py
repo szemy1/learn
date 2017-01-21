@@ -23,11 +23,11 @@ with open('eggs.csv', 'rb') as csvfile:
         """LOMOS
         #a.encode('utf-8').split()
         #print cirill_b
-         #cirill_a_list=[cirill_a]
+        #cirill_a_list=[cirill_a]
         #cirill_a_list_enc = cirill_a_list.encode('utf8')
         #cirill_b =(translit(b, 'ru'))
         #cirill_c =(translit(c, 'ru'))
-         #lista = list(a.items())
+        #lista = list(a.items())
         def last():
             return self.dict[ self.last ]
         #b = a.title()
