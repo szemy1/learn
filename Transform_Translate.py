@@ -4,11 +4,11 @@ from transliterate import translit
 with open('eggs.csv', 'rb') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in spamreader:
-       print ', '.join(row)
+       a =  ', '.join(row)
 
-a = "KOLA"
+#a = "KOLA"
 b = a.title()
-c = a.lower()
+c = a.upper()
 cirill_a =(translit(a, 'ru'))
 cirill_b =(translit(b, 'ru'))
 cirill_c =(translit(c, 'ru'))
