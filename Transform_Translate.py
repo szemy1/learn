@@ -5,8 +5,7 @@ import codecs
 from transliterate import translit
 
 
-def last():
-    return self.dict[ self.last ]
+
 
 a= []
 with open('eggs.csv', 'rb') as csvfile:
@@ -23,7 +22,7 @@ with open('eggs.csv', 'rb') as csvfile:
         generaltfile.write(cirill_a+'\n'+c)
         generaltfile.close()
 
-        
+
         """LOMOS
         #a.encode('utf-8').split()
         #print cirill_b
@@ -32,7 +31,8 @@ with open('eggs.csv', 'rb') as csvfile:
         #cirill_b =(translit(b, 'ru'))
         #cirill_c =(translit(c, 'ru'))
          #lista = list(a.items())
-
+        def last():
+            return self.dict[ self.last ]
         #b = a.title()
         #c = a.upper()
         """
