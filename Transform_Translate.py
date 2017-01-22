@@ -6,14 +6,14 @@ from transliterate import translit
 
 a= []
 with open('eggs.csv', 'rb') as csvfile:
-    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    spamreader = csv.reader(csvfile, delimiter=' ')
     for row in spamreader:
         a.append(', '.join(row))
-        cirill_a =(translit(a, 'ru'))
+        c = str(a)
+        cirill_a =(translit(c.replace("'", ""), 'ru'))
         print a
         print cirill_a
-        cirill_a.encode('utf-8').split()
-        c=str(a)
+        cirill_a.encode('utf-8')#.split()
         codecs.open("generalt.csv", 'a', "utf-8").close()
         generaltfile= codecs.open ("generalt.csv",'a', "utf-8")
         generaltfile.write(cirill_a+'\n'+c)
