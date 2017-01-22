@@ -3,9 +3,13 @@
 import csv
 import codecs
 from transliterate import translit
+from Tkinter import Tk
+from tkFileDialog import askopenfilename
 
 a= []
-with open('eggs.csv', 'rb') as csvfile:
+Tk().withdraw()
+fileutvonal = askopenfilename()
+with open(fileutvonal, 'rb') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ')
     for row in spamreader:
         a.append(', '.join(row))
@@ -16,6 +20,7 @@ with open('eggs.csv', 'rb') as csvfile:
         cirill_a =(translit(c.replace("'", ""), 'ru'))
         cirill_b =(translit(c.replace("'", ""), 'ru')).upper()
         cirill_c = (translit(c.replace("'", ""), 'ru')).title()
+        print fileutvonal
         print a
         print cirill_a
         print cirill_b
@@ -31,6 +36,7 @@ with open('eggs.csv', 'rb') as csvfile:
 
 
         """LOMOS
+        #fileutvonal = raw_input( "feldolgozando file:")
         #a.encode('utf-8').split()
         #print cirill_b
         #cirill_a_list=[cirill_a]
