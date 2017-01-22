@@ -10,10 +10,20 @@ with open('eggs.csv', 'rb') as csvfile:
     for row in spamreader:
         a.append(', '.join(row))
         c = str(a)
+        cupper = c.upper()
+        clower = c.lower()
+        ctitle = c.title()
         cirill_a =(translit(c.replace("'", ""), 'ru'))
+        cirill_b =(translit(c.replace("'", ""), 'ru')).upper()
+        cirill_c = (translit(c.replace("'", ""), 'ru')).title()
         print a
         print cirill_a
-        cirill_a.encode('utf-8')#.split()
+        print cirill_b
+        print cirill_c
+        print  cupper
+        print  clower
+        print ctitle
+        cirill_a.encode('utf-8').split()
         codecs.open("generalt.csv", 'a', "utf-8").close()
         generaltfile= codecs.open ("generalt.csv",'a', "utf-8")
         generaltfile.write(cirill_a+'\n'+c)
