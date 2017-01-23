@@ -23,5 +23,5 @@ for row in olvasas:
     codecs.open("generalt.csv", 'a', "UTF-8").close()
     generaltfile = codecs.open("generalt.csv", 'a', "UTF-8")
     generaltfile.write(latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
-    print "Beirva: "+cirillkicsi+";"+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital
+    print "Beirva: "+cirillkicsi+"|"+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital
     generaltfile.close()
