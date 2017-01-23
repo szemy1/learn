@@ -7,7 +7,7 @@ from Tkinter import Tk
 from tkFileDialog import askopenfilename
 from transliterate import translit
 
-a = "търсене"
+#a = "търсене"
 Tk().withdraw()
 csvfajl = askopenfilename()
 # def melo(self):
@@ -27,7 +27,7 @@ for row in olvasas:
     cirillcapital = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=False)).title()
     codecs.open("generalt.csv", 'a', "utf-8").close()
     generaltfile = codecs.open("generalt.csv", 'a', "utf-8")
-    generaltfile.write(latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital)
+    generaltfile.write(latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
     print "Beirva: "+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital
     generaltfile.close()
 
@@ -44,4 +44,4 @@ for row in olvasas:
 # print(translit(a.decode(encoding='utf-8', errors='strict'), 'bg', reversed=False)).title()
 # print(translit(a.decode(encoding='utf-8', errors='strict'), 'bg', reversed=False)).lower()
 
-print latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital
+#print latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital
