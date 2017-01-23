@@ -1,26 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import csv
 import codecs
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
 from transliterate import translit
-#import unicodecsv as csv
-#defaultencoding = 'utf-8'
 
 Tk().withdraw()
 csvfajl = askopenfilename()
-
-
 olvasas = csv.reader(open(csvfajl,"rb"))
 for row in olvasas:
-    #print row
-    #print(", ".join(row))
     kjh = (", ".join(row))
-    #kjh = (u'\n'.join(row))
     print kjh.decode(encoding='iso-8859-1')
-    #print kjh
     forditas = raw_input("Forditas:")
     str(forditas)
     latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=True)).lower()
