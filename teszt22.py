@@ -5,7 +5,7 @@ import csv
 import codecs
 from transliterate import translit
 
-a = "трудово право"
+a = "условия на труд"
 
 # def melo(self):
 #     b= True
