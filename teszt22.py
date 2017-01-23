@@ -17,6 +17,9 @@ csvfajl = askopenfilename()
 olvasas = csv.reader(open(csvfajl,"rb"))
 for row in olvasas:
     print row
+    # alap= row
+    # str(alap.encode(encoding='utf-8'))
+    # print alap
     forditas = raw_input("Forditas:")
     str(forditas)
     latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=True)).lower()
