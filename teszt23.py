@@ -21,7 +21,8 @@ for row in olvasas:
     #kjh = (u'\n'.join(row))
     print kjh.decode(encoding='iso-8859-1')
     #print kjh
-    forditas = raw_input("Forditas:")
+    #forditas = raw_input("Forditas:")
+    forditas = (", ".join(row))
     str(forditas)
     latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=True)).lower()
     latinnagy = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=True)).upper()
