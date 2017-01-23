@@ -22,6 +22,6 @@ for row in olvasas:
     cirillcapital = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=False)).title()
     codecs.open("generalt.csv", 'a', "UTF-8").close()
     generaltfile = codecs.open("generalt.csv", 'a', "UTF-8")
-    generaltfile.write(latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
+    generaltfile.write(cirillkicsi+"|"+latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
     print "Beirva: "+cirillkicsi+"|"+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital
     generaltfile.close()
