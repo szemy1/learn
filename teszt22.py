@@ -17,11 +17,11 @@ for row in olvasas:
     latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=True)).lower()
     latinnagy = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=True)).upper()
     latincapital = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=True)).title()
-    cirillkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=False)).upper()
-    cirillnagy = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=False)).lower()
+    cirillnagy = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=False)).upper()
+    cirillkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=False)).lower()
     cirillcapital = (translit(forditas.decode(encoding='utf-8', errors='strict'), 'bg', reversed=False)).title()
     codecs.open("generalt.csv", 'a', "UTF-8").close()
     generaltfile = codecs.open("generalt.csv", 'a', "UTF-8")
     generaltfile.write(latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
-    print "Beirva: "+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital
+    print "Beirva: "+cirillkicsi+";"+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital
     generaltfile.close()
