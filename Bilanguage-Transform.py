@@ -5,6 +5,7 @@ import codecs
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
 from transliterate import translit
+import goslate
 
 
 language = raw_input("Nyelv ['el', 'hy', 'ka', 'ru', 'bg']:")
@@ -12,9 +13,11 @@ szeparator = raw_input(u"alkalmazott szeparátor:")
 Tk().withdraw()
 csvfajl = askopenfilename()
 olvasas = csv.reader(open(csvfajl,"rb"))
+gs = goslate.Goslate()
 for row in olvasas:
     forditando = (", ".join(row))
     print forditando.decode(encoding='iso-8859-1')
+    print(gs.translate(forditando.decode(encoding='iso-8859-1'), language))
     forditas = raw_input(u"Fordítas:")
     str(forditas)
     latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).lower()
