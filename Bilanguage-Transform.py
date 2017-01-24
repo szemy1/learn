@@ -4,9 +4,28 @@ import csv
 import codecs
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
+import os
+import site
+
+try:
+    import goslate
+except ImportError:
+    print "installing goslate"
+    cmd = "pip install goslate"
+    os.system(cmd)
+    reload(site)
+try:
+    import transliterate
+except ImportError:
+    print "no lib transliterate"
+    import pip
+    cmd = "pip install transliterate"
+    print "Requests package is missing\nPlease enter root password to install required package"
+    os.system(cmd)
+    reload(site)
+
 from transliterate import translit
 import goslate
-
 
 language = raw_input("Nyelv ['el', 'hy', 'ka', 'ru', 'bg']:")
 szeparator = raw_input(u"alkalmazott szeparátor:")
