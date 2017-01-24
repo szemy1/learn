@@ -11,6 +11,7 @@ try:
     import goslate
 except ImportError:
     print "installing goslate"
+    import pip
     cmd = "pip install goslate"
     os.system(cmd)
     reload(site)
