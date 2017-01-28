@@ -43,7 +43,6 @@ def transgoogle(word, sourceLanguage, targetLanguage):
     before_trans = 'class="t0">'
     link = "http://translate.google.com/m?hl=%s&sl=%s&q=%s" % (targetLanguage, sourceLanguage, word)
     link = link.encode(encoding='utf8')
-    print "Autómatikus fordítás linkje: "+link
     request = urllib2.Request(link, headers=agents)
     page = urllib2.urlopen(request).read()
     result = page[page.find(before_trans)+len(before_trans):]
@@ -59,7 +58,7 @@ olvasas = csv.reader(open(csvfajl,"rb"))
 for row in olvasas:
     forditando = ("".join(row)).decode(encoding='iso-8859-1')
     str(row).replace("'","").replace("[","").replace("]", "").decode(encoding='iso-8859-1')
-    print "Aktuálisan fordítandó kifejezés: "+forditando
+    print u"Aktuálisan fordítandó kifejezés: "+forditando
     tip = transgoogle(forditando, 'hu', language)
     print "Javaslat: "+tip[0]
     forditas = raw_input(u"Fordítas:")
