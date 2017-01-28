@@ -38,6 +38,15 @@ from transliterate import translit
 import urllib2
 
 
+def prRed(prt): print("\033[91m {}\033[00m" .format(prt))
+def prGreen(prt): print("\033[92m {}\033[00m" .format(prt))
+def prYellow(prt): print("\033[93m {}\033[00m" .format(prt))
+def prLightPurple(prt): print("\033[94m {}\033[00m" .format(prt))
+def prPurple(prt): print("\033[95m {}\033[00m" .format(prt))
+def prCyan(prt): print("\033[96m {}\033[00m" .format(prt))
+def prLightGray(prt): print("\033[97m {}\033[00m" .format(prt))
+def prBlack(prt): print("\033[98m {}\033[00m" .format(prt))
+
 def transgoogle(word, sourceLanguage, targetLanguage):
     agents = {'User-Agent':"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)"}
     before_trans = 'class="t0">'
@@ -49,19 +58,21 @@ def transgoogle(word, sourceLanguage, targetLanguage):
     result = result.split("<")[0]
     return (result, page)
 
-language = raw_input("Nyelv ['el', 'hy', 'ka', 'ru', 'bg']:")
-szeparator = raw_input(u"alkalmazott szeparátor:")
+language = raw_input(("\033[96m {}\033[00m" .format("Nyelv ['el', 'hy', 'ka', 'ru', 'bg']:")))
+szeparator = raw_input((u"\033[96m {}\033[00m" .format(u"alkalmazott szeparátor:")))
 Tk().withdraw()
+print u"CSV állomány kiválasztása!"
 csvfajl = askopenfilename()
+print u"Fájl megnyitása:"+("\033[96m {}\033[00m" .format(csvfajl))
 olvasas = csv.reader(open(csvfajl,"rb"))
 
 for row in olvasas:
     forditando = ("".join(row)).decode(encoding='iso-8859-1')
-    str(row).replace("'","").replace("[","").replace("]", "").decode(encoding='iso-8859-1')
-    print u"Aktuálisan fordítandó kifejezés: "+forditando
+   #str(row).replace("'","").replace("[","").replace("]", "").decode(encoding='iso-8859-1')
+    print u"Aktuálisan fordítandó kifejezés: "+(u"\033[91m {}\033[00m" .format(forditando))
     tip = transgoogle(forditando, 'hu', language)
-    print "Javaslat: "+tip[0]
-    forditas = raw_input(u"Fordítas:")
+    print "Google javaslat: "+("\033[94m {}\033[00m" .format(tip[0]))
+    forditas = raw_input((u"\033[93m {}\033[00m" .format(u"Fordítas:")))
     str(forditas)
     latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).lower()
     latinnagy = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).upper()
@@ -72,5 +83,5 @@ for row in olvasas:
     codecs.open("generalt.csv", 'a', "UTF-8").close()
     generaltfile = codecs.open("generalt.csv", 'a', "UTF-8")
     generaltfile.write(cirillkicsi+"|"+latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
-    print u"Beírva a generalt.csv állományba: "+cirillkicsi+szeparator+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital
+    print u"Beírva a generalt.csv állományba: "+(u"\033[95m {}\033[00m" .format(cirillkicsi+szeparator+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital))
     generaltfile.close()
