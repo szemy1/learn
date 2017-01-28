@@ -66,7 +66,6 @@ def programstart():
 
     for row in olvasas:
         forditando = ("".join(row)).decode(encoding='iso-8859-1')
-       #str(row).replace("'","").replace("[","").replace("]", "").decode(encoding='iso-8859-1')
         print u"Aktuálisan fordítandó kifejezés: "+(u"\033[91m {}\033[00m" .format(forditando))
         tip = transgoogle(forditando, 'hu', language)
         print "Google javaslat: "+("\033[94m {}\033[00m" .format(tip[0]))
