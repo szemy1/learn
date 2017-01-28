@@ -4,37 +4,9 @@ import csv
 import codecs
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
-import os
-import site
-import urllib
-
-#import pip
-#pipcmd = "python -m pip install --upgrade pip"
-#os.system(pipcmd)
-
-
-try:
-    import chardet
-except ImportError:
-    print "no lib chardet"
-    import pip
-    cmd = "pip install chardet"
-    print "Requests package is missing\nNow install it chardet"
-    os.system(cmd)
-    reload(site)
-
-import chardet
-
-try:
-    import transliterate
-except ImportError:
-    print "no lib transliterate"
-    import pip
-    cmd = "pip install transliterate"
-    print "Requests package is missing\nNow install it transliterate"
-    os.system(cmd)
-    reload(site)
-
+import sys
+sys.stdout = codecs.getwriter('utf8')(sys.stdout)
+sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 from transliterate import translit
 import urllib2
 
@@ -44,12 +16,10 @@ def transgoogle(word, sourceLanguage, targetLanguage):
     before_trans = 'class="t0">'
     link = "http://translate.google.com/m?hl=%s&sl=%s&q=%s" % (targetLanguage, sourceLanguage, word)
     link = link.encode(encoding='utf8')
-    print link
     request = urllib2.Request(link, headers=agents)
     page = urllib2.urlopen(request).read()
     result = page[page.find(before_trans)+len(before_trans):]
     result = result.split("<")[0]
-    #result = result.decode(encodeing= 'utf')
     return (result, page)
 
 
@@ -63,11 +33,9 @@ olvasas = csv.reader(open(csvfajl,"rb"))
 for row in olvasas:
     forditando = ("".join(row)).decode(encoding='iso-8859-1')
     str(row).replace("'","").replace("[","").replace("]", "").decode(encoding='iso-8859-1')
-    # encoding = chardet.detect(forditando)
-    # forditando.decode(encoding['encoding'], errors='strict')
     print forditando
     tip = transgoogle(forditando, 'hu', language)
-    print tip[0]
+    print tip[0].decode(encoding='utf-8')
     forditas = raw_input(u"Fordítas:")
     str(forditas)
     latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).lower()
