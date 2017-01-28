@@ -4,6 +4,9 @@ import csv
 import codecs
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
+
+"""
+# INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
 import os
 import site
 
@@ -33,7 +36,8 @@ except ImportError:
     print "Requests package is missing\nNow install it transliterate"
     os.system(cmd)
     reload(site)
-
+# INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
+"""
 from transliterate import translit
 import urllib2
 
