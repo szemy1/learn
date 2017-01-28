@@ -4,9 +4,9 @@ import csv
 import codecs
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
-import sys
-#sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-#sys.stderr = codecs.getwriter('utf8')(sys.stderr)
+# import sys
+# sys.stdout = codecs.getwriter('utf8')(sys.stdout)
+# sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
 def install():
@@ -40,7 +40,7 @@ def install():
         os.system(cmd)
         reload(site)
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
-
+install()
 from transliterate import translit
 import urllib2
 
@@ -83,5 +83,5 @@ def programstart():
         generaltfile.write(cirillkicsi+"|"+latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
         print u"Beírva a generalt.csv állományba: "+(u"\033[95m {}\033[00m" .format(cirillkicsi+szeparator+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital))
         generaltfile.close()
-#install()
+
 programstart()
