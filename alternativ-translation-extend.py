@@ -1,11 +1,12 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-1 -*-
 import csv
 import codecs
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
 import os
 import site
+import urllib
 
 #import pip
 #pipcmd = "python -m pip install --upgrade pip"
@@ -42,39 +43,32 @@ def transgoogle(word, sourceLanguage, targetLanguage):
     agents = {'User-Agent':"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)"}
     before_trans = 'class="t0">'
     link = "http://translate.google.com/m?hl=%s&sl=%s&q=%s" % (targetLanguage, sourceLanguage, word)
-    request = urllib2.Request(link, headers=agents)
+    link = link.encode(encoding='utf8')
     print link
+    request = urllib2.Request(link, headers=agents)
     page = urllib2.urlopen(request).read()
     result = page[page.find(before_trans)+len(before_trans):]
     result = result.split("<")[0]
-    #rawdata = result.read()
-    #encoding = chardet.detect(rawdata)
-    #rawdata.decode(encoding['encoding'])
-    #return (rawdata,page)
-    #encoding = chardet.detect(result)
-    result.decode(encoding='utf-8')
+    #result = result.decode(encodeing= 'utf')
     return (result, page)
 
-def unicode_csv_reader(utf8_data, dialect=csv.excel, **kwargs):
-    csv_reader = csv.reader(utf8_data, dialect=dialect, **kwargs)
-    for row in csv_reader:
-        yield [unicode(cell, 'utf-8') for cell in row]
+
 
 language = raw_input("Nyelv ['el', 'hy', 'ka', 'ru', 'bg']:")
-szeparator = raw_input(u"alkalmazott szeparÃ¡tor:")
+szeparator = raw_input(u"alkalmazott szeparátor:")
 Tk().withdraw()
 csvfajl = askopenfilename()
 olvasas = csv.reader(open(csvfajl,"rb"))
-#olvasas = unicode_csv_reader(open(csvfajl))
-#gs = goslate.Goslate()
+
 for row in olvasas:
-    forditando = (", ".join(row))
-    forditando.decode(encoding='iso-8859-1', errors='ignore')
+    forditando = ("".join(row)).decode(encoding='iso-8859-1')
+    str(row).replace("'","").replace("[","").replace("]", "").decode(encoding='iso-8859-1')
+    # encoding = chardet.detect(forditando)
+    # forditando.decode(encoding['encoding'], errors='strict')
     print forditando
     tip = transgoogle(forditando, 'hu', language)
     print tip[0]
-    #print(gs.translate(forditando.decode(encoding='iso-8859-1'), language))
-    forditas = raw_input(u"FordÃ­tas:")
+    forditas = raw_input(u"Fordítas:")
     str(forditas)
     latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).lower()
     latinnagy = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).upper()
@@ -85,5 +79,5 @@ for row in olvasas:
     codecs.open("generalt.csv", 'a', "UTF-8").close()
     generaltfile = codecs.open("generalt.csv", 'a', "UTF-8")
     generaltfile.write(cirillkicsi+"|"+latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
-    print u"BeÃ­rva: "+cirillkicsi+szeparator+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital
+    print u"Beírva: "+cirillkicsi+szeparator+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital
     generaltfile.close()
