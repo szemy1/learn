@@ -6,12 +6,13 @@ from Tkinter import Tk
 from tkFileDialog import askopenfilename
 import os
 import site
-import urllib
 
-#import pip
-#pipcmd = "python -m pip install --upgrade pip"
-#os.system(pipcmd)
-
+pipcmd0 = "python -m pip install --upgrade pip"
+pipcmd1 = "python -m pip install --upgrade wheel"
+pipcmd2= "python -m pip install --upgrade setuptools"
+os.system(pipcmd0)
+os.system(pipcmd1)
+os.system(pipcmd2)
 
 try:
     import chardet
