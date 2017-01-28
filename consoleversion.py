@@ -5,10 +5,12 @@ import codecs
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
 import sys
-sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-sys.stderr = codecs.getwriter('utf8')(sys.stderr)
+# sys.stdout = codecs.getwriter('utf8')(sys.stdout)
+# sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 from transliterate import translit
 import urllib2
+import win_unicode_console
+win_unicode_console.enable()
 
 
 
@@ -33,12 +35,10 @@ def programstart():
 
     for row in olvasas:
         forditando = ("".join(row)).decode(encoding='iso-8859-1')
-        str(row).replace("'","").replace("[","").replace("]", "").decode(encoding='iso-8859-1')
         print forditando
         tip = transgoogle(forditando, 'hu', language)
         print tip[0].decode(encoding='utf-8')
         forditas = raw_input(u"Fordítas:")
-        str(forditas)
         latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).lower()
         latinnagy = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).upper()
         latincapital = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).title()
@@ -47,7 +47,9 @@ def programstart():
         cirillcapital = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=False)).title()
         codecs.open("generalt.csv", 'a', "UTF-8").close()
         generaltfile = codecs.open("generalt.csv", 'a', "UTF-8")
-        generaltfile.write(cirillkicsi+"|"+latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
-        print u"Beírva: "+cirillkicsi+szeparator+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital
+        inrecord = (cirillkicsi+szeparator+latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
+        inrecord.encode(encoding='utf-8', errors='strict')
+        generaltfile.write(inrecord)
+        print u"Beírva: "+inrecord
         generaltfile.close()
 programstart()

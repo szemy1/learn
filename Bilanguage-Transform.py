@@ -79,7 +79,7 @@ def programstart():
         cirillcapital = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=False)).title()
         codecs.open("generalt.csv", 'a', "UTF-8").close()
         generaltfile = codecs.open("generalt.csv", 'a', "UTF-8")
-        generaltfile.write(cirillkicsi+"|"+latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
+        generaltfile.write(cirillkicsi+szeparator+latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
         print u"Beírva a generalt.csv állományba: "+(u"\033[95m {}\033[00m" .format(cirillkicsi+szeparator+latinkicsi + ";" + latinnagy + ";" + latincapital + ";" + cirillkicsi + ";" + cirillnagy + ";" + cirillcapital))
         generaltfile.close()
 
