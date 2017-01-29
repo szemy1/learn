@@ -7,7 +7,6 @@ from tkFileDialog import askopenfilename
 # import sys
 # sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 # sys.stderr = codecs.getwriter('utf8')(sys.stderr)
-
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
 def install():
     import os
@@ -40,7 +39,12 @@ def install():
         os.system(cmd)
         reload(site)
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
-install()
+fuggosegek = raw_input(u"Lib-ek telepítéséhez írjon be bármilyen értéket - (Enter) Lib-ek telepítésének kihagyása:")
+str(fuggosegek)
+if len(fuggosegek) != 0:
+    print (u"\033[91m {}\033[00m" .format(u"Lib-ek telepítése!"))
+    install()
+
 from transliterate import translit
 import urllib2
 
@@ -69,8 +73,11 @@ def programstart():
         print u"Aktuálisan fordítandó kifejezés: "+(u"\033[91m {}\033[00m" .format(forditando))
         tip = transgoogle(forditando, 'hu', language)
         print "Google javaslat: "+("\033[94m {}\033[00m" .format(tip[0]))
+        print u"    A Fordítást üresen hagyva a javasolt érték kerül beillesztésre!"
         forditas = raw_input((u"\033[93m {}\033[00m" .format(u"Fordítas:")))
         str(forditas)
+        if len(forditas) == 0:
+            forditas = tip[0]
         latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).lower()
         latinnagy = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).upper()
         latincapital = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).title()
