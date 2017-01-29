@@ -111,24 +111,14 @@ def programstart():
         print u"    A Fordítást üresen hagyva a javasolt érték kerül beillesztésre!"
         forditas = raw_input((u"\033[93m {}\033[00m" .format(u"Fordítas:")))
         str(forditas)
-        forditas = forditas.decode(encoding='utf-8',  errors='strict')
         if len(forditas) == 0:
             forditas = tip[0]
-        '''
         latinkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).lower()
         latinnagy = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).upper()
         latincapital = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=True)).title()
         cirillnagy = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=False)).upper()
         cirillkicsi = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=False)).lower()
         cirillcapital = (translit(forditas.decode(encoding='utf-8', errors='strict'), language, reversed=False)).title()
-        '''
-        latinkicsi = (cyrtranslit.to_latin(forditas.decode(encoding='utf-8', errors='strict'), language)).lower()
-        latinnagy = (cyrtranslit.to_latin(forditas.decode(encoding='utf-8', errors='strict'), language)).upper()
-        latincapital = (cyrtranslit.to_latin(forditas.decode(encoding='utf-8', errors='strict'), language)).title()
-        cirillnagy = (cyrtranslit.to_cyrillic(forditas.decode(encoding='utf-8', errors='strict'), language)).upper()
-        cirillkicsi = (cyrtranslit.to_cyrillic(forditas.decode(encoding='utf-8', errors='strict'), language)).lower()
-        cirillcapital = (cyrtranslit.to_cyrillic(forditas.decode(encoding='utf-8', errors='strict'), language)).title()
-
         codecs.open("generalt.csv", 'a', "UTF-8").close()
         generaltfile = codecs.open("generalt.csv", 'a', "UTF-8")
         generaltfile.write(cirillkicsi+szeparator+latinkicsi+";"+latinnagy+";"+latincapital+";"+cirillkicsi+";"+cirillnagy+";"+cirillcapital+"\n")
