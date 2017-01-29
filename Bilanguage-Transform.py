@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: iso-8859-2 -*-
 import csv
 import codecs
 from Tkinter import Tk
@@ -7,6 +7,7 @@ from tkFileDialog import askopenfilename
 # import sys
 # sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 # sys.stderr = codecs.getwriter('utf8')(sys.stderr)
+
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
 def install():
     import os
@@ -40,16 +41,17 @@ def install():
         reload(site)
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
 
-fuggosegek = raw_input(u"Lib-ek telepítéséhez írjon be bármilyen értéket - (Enter) Lib-ek telepítésének kihagyása:")
+fuggosegek = raw_input(u"Függõségek telepítéséhez írjon be bármilyen értéket - (Enter) Lib-ek telepítésének kihagyása:")
 str(fuggosegek)
 if len(fuggosegek) != 0:
-    print (u"\033[91m {}\033[00m" .format(u"Lib-ek telepítése!"))
+    print (u"\033[91m {}\033[00m" .format(u"Függõségek telepítése!"))
     install()
 
 from transliterate import translit
 import urllib2
 
 def transgoogle(word, sourceLanguage, targetLanguage):
+    word = word.replace(" ", "%20")
     agents = {'User-Agent':"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)"}
     before_trans = 'class="t0">'
     link = "http://translate.google.com/m?hl=%s&sl=%s&q=%s" % (targetLanguage, sourceLanguage, word)
