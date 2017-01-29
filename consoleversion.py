@@ -1,24 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: iso-8859-2 -*-
-import csv
-import codecs
-from Tkinter import Tk
-from tkFileDialog import askopenfilename
-import sys
-# sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-# sys.stderr = codecs.getwriter('utf8')(sys.stderr)
-from transliterate import translit
-import urllib2
 
-#!/usr/bin/env python
-# -*- coding: iso-8859-2 -*-
 import csv
 import codecs
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
-# import sys
-# sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-# sys.stderr = codecs.getwriter('utf8')(sys.stderr)
+
 
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
 

@@ -4,9 +4,7 @@ import csv
 import codecs
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
-# import sys
-# sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-# sys.stderr = codecs.getwriter('utf8')(sys.stderr)
+
 
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
 def install():
