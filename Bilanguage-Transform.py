@@ -30,6 +30,18 @@ def install():
         os.system(cmd)
         reload(site)
 
+
+    try:
+        import win_unicode_console
+    except ImportError:
+        print "no lib win_unicode_console"
+        import pip
+        cmd = "pip install win_unicode_console"
+        print "Requests package is missing\nNow install it chardet"
+        os.system(cmd)
+        reload(site)
+
+
     try:
         import transliterate
     except ImportError:
@@ -41,14 +53,19 @@ def install():
         reload(site)
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
 
-fuggosegek = raw_input(u"Függõségek telepítéséhez írjon be bármilyen értéket - (Enter) Lib-ek telepítésének kihagyása:")
+fuggosegek = raw_input("Install Lib?(y/n):")
 str(fuggosegek)
-if len(fuggosegek) != 0:
-    print (u"\033[91m {}\033[00m" .format(u"Függõségek telepítése!"))
+if fuggosegek == 'y':
+    print "Lib Installation Progress"
     install()
+elif len(fuggosegek) == 'n':
+    exit()
+
 
 from transliterate import translit
 import urllib2
+import win_unicode_console
+win_unicode_console.enable()
 
 def transgoogle(word, sourceLanguage, targetLanguage):
     word = word.replace(" ", "%20")

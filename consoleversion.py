@@ -21,6 +21,7 @@ from tkFileDialog import askopenfilename
 # sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
+
 def install():
     import os
     import site
@@ -66,11 +67,14 @@ def install():
 
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
 
-# fuggosegek = raw_input(u"Függõségek telepítéséhez írjon be bármilyen értéket - (Enter) Lib-ek telepítésének kihagyása:")
-# str(fuggosegek)
-# if len(fuggosegek) != 0:
-#     print (u"\033[91m {}\033[00m" .format(u"Függõségek telepítése!"))
-install()
+fuggosegek = raw_input("Install Lib?(y/n):")
+str(fuggosegek)
+if fuggosegek == 'y':
+    print "Lib Installation Progress"
+    install()
+elif len(fuggosegek) == 'n':
+    exit()
+
 
 from transliterate import translit
 import cyrtranslit
@@ -107,6 +111,7 @@ def programstart():
         print u"    A Fordítást üresen hagyva a javasolt érték kerül beillesztésre!"
         forditas = raw_input((u"\033[93m {}\033[00m" .format(u"Fordítas:")))
         str(forditas)
+        forditas = forditas.decode(encoding='utf-8',  errors='strict')
         if len(forditas) == 0:
             forditas = tip[0]
         '''
