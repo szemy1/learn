@@ -39,6 +39,7 @@ def install():
         os.system(cmd)
         reload(site)
 # INSTALL REQUIREMENTS SECTION-----------------------------------------------------------------------------------------
+
 fuggosegek = raw_input(u"Lib-ek telepítéséhez írjon be bármilyen értéket - (Enter) Lib-ek telepítésének kihagyása:")
 str(fuggosegek)
 if len(fuggosegek) != 0:
