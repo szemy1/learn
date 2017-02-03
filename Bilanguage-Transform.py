@@ -23,7 +23,7 @@ def install():
     except ImportError:
         print "no lib chardet"
         import pip
-        cmd = "pip install chardet"
+        cmd = "python -m pip install chardet"
         print "Requests package is missing\nNow install it chardet"
         os.system(cmd)
         reload(site)
@@ -34,7 +34,7 @@ def install():
     except ImportError:
         print "no lib win_unicode_console"
         import pip
-        cmd = "pip install win_unicode_console"
+        cmd = "python -m pip install win_unicode_console"
         print "Requests package is missing\nNow install it chardet"
         os.system(cmd)
         reload(site)
@@ -45,7 +45,7 @@ def install():
     except ImportError:
         print "no lib transliterate"
         import pip
-        cmd = "pip install transliterate"
+        cmd = "python -m pip install transliterate"
         print "Requests package is missing\nNow install it transliterate"
         os.system(cmd)
         reload(site)
